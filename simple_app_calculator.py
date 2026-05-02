@@ -123,41 +123,47 @@ class Display:
                   "  exit   Quit                ",      
             ]
 
+            while len(legend_lines) < len(calculator_body):
+                  legend_lines.append("")
 
+            for i, calculator_body in enumerate(calculator_body):
+                  legend_body = legend_lines[i] if i < len(legend_lines) else ""
+                  print(f"{calculator_body}    {legend_body}")
 
+            print("\nEnter your command below:")
+      
+      def draw_exit(self):
+            self.clear_screen
+            print("╔═══════════════════════════════════════════╗     LEGEND")
+            print("║             PYTHON CALCULATOR             ║    ─────────────────────────────")
+            print("╠═══════════════════════════════════════════╣     +      Add          (+ 5)   ")
+            print("║      Thank you for using Recreatem3's     ║     -      Subtract     (- 10)  ")
+            print("║              Python Calculator!           ║     x      Multiply     (x 2)   ")
+            print("║                                           ║     /      Divide       (/ 4)   ")
+            print("╠══════════╦══════════╦══════════╦══════════╣     %      Modulus      (% 3)   ")
+            print("║          ║          ║          ║          ║     ^      Power        (^ 2)   ")
+            print("║    %     ║    CE    ║    C     ║   exit   ║     r      Reciprocal   (r)     ")
+            print("║          ║          ║          ║          ║     sq     Square       (sq)    ")
+            print("╠══════════╬══════════╬══════════╬══════════╣     sqrt   Square Root  (sqrt)  ")
+            print("║          ║          ║          ║          ║     +/-    Negate       (+/-)   ")
+            print("║   1/x    ║     ^    ║   ²√x    ║     ÷    ║     clear  Reset to 0          ")
+            print("║          ║          ║          ║          ║     exit   Quit                ")
+            print("╠══════════╬══════════╬══════════╬══════════╣")
+            print("║          ║          ║          ║          ║")
+            print("║     7    ║     8    ║     9    ║     x    ║")
+            print("║          ║          ║          ║          ║")
+            print("╠══════════╬══════════╬══════════╬══════════╣")
+            print("║          ║          ║          ║          ║")
+            print("║     4    ║     5    ║     6    ║     -    ║")
+            print("║          ║          ║          ║          ║")
+            print("╠══════════╬══════════╬══════════╬══════════╣")
+            print("║          ║          ║          ║          ║")
+            print("║     1    ║     2    ║     3    ║     +    ║")
+            print("║          ║          ║          ║          ║")
+            print("╠══════════╬══════════╬══════════╬══════════╣")
+            print("║          ║          ║          ║          ║")
+            print("║   +/-    ║     0    ║     .    ║     =    ║")
+            print("║          ║          ║          ║          ║")
+            print("╚══════════╩══════════╩══════════╩══════════╝")
 
-
-print("""
-╔═══════════════════════════════════════════╗     LEGEND")
-║             PYTHON CALCULATOR             ║    ─────────────────────────────
-╠═══════════════════════════════════════════╣     +      Add          (+ 5)   
-║                                           ║     -      Subtract     (- 10)  
-║                                           ║     x      Multiply     (x 2)   
-║                                           ║     /      Divide       (/ 4)   
-╠══════════╦══════════╦══════════╦══════════╣     %      Modulus      (% 3)   
-║          ║          ║          ║          ║     ^      Power        (^ 2)   
-║    %     ║    CE    ║    C     ║   exit   ║     r      Reciprocal   (r)     
-║          ║          ║          ║          ║     sq     Square       (sq)    
-╠══════════╬══════════╬══════════╬══════════╣     sqrt   Square Root  (sqrt)  
-║          ║          ║          ║          ║     +/-    Negate       (+/-)   
-║   1/x    ║     ^    ║   ²√x    ║     ÷    ║     clear  Reset to 0          
-║          ║          ║          ║          ║     exit   Quit                
-╠══════════╬══════════╬══════════╬══════════╣
-║          ║          ║          ║          ║
-║     7    ║     8    ║     9    ║     x    ║
-║          ║          ║          ║          ║
-╠══════════╬══════════╬══════════╬══════════╣
-║          ║          ║          ║          ║
-║     4    ║     5    ║     6    ║     -    ║
-║          ║          ║          ║          ║
-╠══════════╬══════════╬══════════╬══════════╣
-║          ║          ║          ║          ║
-║     1    ║     2    ║     3    ║     +    ║
-║          ║          ║          ║          ║
-╠══════════╬══════════╬══════════╬══════════╣
-║          ║          ║          ║          ║
-║   +/-    ║     0    ║     .    ║     =    ║
-║          ║          ║          ║          ║
-╚══════════╩══════════╩══════════╩══════════╝
-      """)
-    
+   
