@@ -256,4 +256,23 @@ class App:
 
       def run(self):
             while True:
+                  self.display.draw(self.calc, self.handler.expression_str, self.handler.error_msg)
+                  self.handler.error_msg = ""
+                  
                   try:
+                        user_input = input(">> ")
+                        result = self.handler.handle(user_input)
+
+                        if result == "exit":
+                              self.display.draw_exit()
+                              break
+
+                  except KeyboardInterrupt:
+                        self.display.draw_exit()
+                        break
+
+                  except Exception:
+                        self.handler.error_msg = "Numerical limit exceeded"
+
+app = App()
+app.run()
