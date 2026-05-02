@@ -166,4 +166,94 @@ class Display:
             print("║          ║          ║          ║          ║")
             print("╚══════════╩══════════╩══════════╩══════════╝")
 
-   
+class InputHandler:
+      def __init__(self, calc, display):
+            self.calc = calc
+            self.display = display
+            self.expression_str = ""
+            self.error_msg = ""
+      
+      def handle(self, user_input):
+            user_input = user_input.strip().lower()
+
+            if user_input == "exit":
+                  return "exit"
+            
+            elif user_input == "clear":
+                  self.calc.clear()
+                  self.expression_str = ""
+                  return "continue"
+
+            elif user_input == "r":
+                  result = self.calc.reciprocal()
+                  if result:
+                        self.error_msg = result
+                  else:
+                        self.expression_str = f"1/({self.display.format_result(self.calc.current_value)})"
+            
+            elif user_input == "sq":
+                  self.expression_str = f"({self.display.format_result(self.calc.current_value)})"
+                  self.calc.square()
+            
+            elif user_input == "sqrt":
+                  result = self.calc.square_root()
+                  if result:
+                        self.error_msg = result
+                  else:
+                        self.expression_str = f"√({self.display.format_result(self.calc.current_value)})"
+            
+            elif user_input == "+/-":
+                  self.expression_str = f"-({self.display.format_result(self.calc.current_value)})"
+                  self.calc.negate()
+
+            else:
+                  parts = user_input.split()
+                  if len(parts) != 2:
+                        self.error_msg = "Invalud! Example: + 25"
+                        return "continue"
+                  
+                  op = parts [0]
+
+                  try: 
+                        num = float(num[1])
+                  except ValueError:
+                        self.error_msg = "Please enter a valid number!"
+                        return "continue"
+                  
+                  previous_value = self.display.format_result(self.calc.current_value)
+
+                  if op == "+":
+                        self.expression_str = f"{previous_value} + {num}"
+                        self.calc.add(num)
+                  elif op == "-":
+                        self.expression_str = f"{previous_value} - {num}"
+                        self.calc.subtract(num)
+                  elif op == "x":
+                        self.expression_str = f"{previous_value} x {num}"
+                        self.calc.multiply(num)
+                  elif op == "/":
+                        self.calc.divide(num)
+                        if result:
+                              self.error_msg = result
+                        else:
+                              self.expression_str = f"{previous_value} / {num}"
+                  elif op == "%":
+                        self.expression_str = f"{previous_value} % {num}"
+                        self.calc.modulus(num)
+                  elif op == "^":
+                        self.expression_str = f"{previous_value} ** {num}"
+                        self.calc.power(num)
+                  else:
+                        self.error_msg = "Unknown operatior!"
+            
+            return "continue"
+
+class App:
+      def __init__(self):
+            self.calc = Calculator()
+            self.display = Display()
+            self.handler = InputHandler()
+
+      def run(self):
+            while True:
+                  try:
